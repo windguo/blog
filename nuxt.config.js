@@ -19,7 +19,7 @@ module.exports = {
   },
   generate: {
     routes: [
-      '/posts/1'
+      '/list/1'
     ]
   },
   /*
