@@ -3,7 +3,7 @@
     <div>
       <logo />
       <h1 class="title">
-        nuxteghjgrewqwedfg
+        111111
       </h1>
       <h2 class="subtitle">
         My stupendous Nuxt.js project
