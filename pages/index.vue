@@ -2,34 +2,34 @@
   <section class="container">
     <div>
       <logo />
-      <h1 class="title">
-        22222
-      </h1>
-      <h2 class="subtitle">
-        My stupendous Nuxt.js project
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >GitHub</a>
-      </div>
+      <ul>
+      <li v-for="(i, index) in reArr" :key="index">
+        <NuxtLink :to="{ name: 'i-id', params: { id: i.classid } }">
+          {{ i.classname }}
+        </NuxtLink>
+      </li>
+    </ul>
     </div>
   </section>
 </template>
 
 <script>
+import axios from 'axios';
+
 import Logo from '~/components/Logo.vue'
 
 export default {
   components: {
     Logo
+  },
+  asyncData({ req, params }) {
+    return axios.get('https://www.yishuzi.com.cn/wangming_xiaochengxu_api/?getJson=class')
+      .then((res) => {
+        console.log('_res___',res.data.result);
+        return {
+          reArr:res.data.result
+        }
+      })
   }
 }
 </script>
