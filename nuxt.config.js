@@ -22,13 +22,35 @@ module.exports = {
   */
   loading: { color: '#c00' },
   router: {
-    base: "/" //此为根目录，如果有具体目录需求按实际情况写
+    base: '/' // 此为根目录，如果有具体目录需求按实际情况写
   },
   /*
   ** Global CSS
   */
   css: [],
-
+  generate: {
+    generate: {
+      routes: function (callback) {
+        axios.get('https://www.yishuzi.com.cn/wangming_xiaochengxu_api/?getJson=class')
+          .then((res) => {
+            var routes = res.data.map((user) => {
+              return '/list/' + user.classid
+            })
+            callback(null, routes)
+          })
+          .catch(callback)
+        };
+        axios.get('https://www.yishuzi.com.cn/wangming_xiaochengxu_api/?getJson=content')
+          .then((res) => {
+            var routes = res.data.map((user) => {
+              return '/content/' + user.id
+            })
+            callback(null, routes)
+          })
+          .catch(callback)
+        }
+    }
+  },
   /*
   ** Plugins to load before mounting the App
   */
