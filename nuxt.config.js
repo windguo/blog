@@ -17,11 +17,6 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
-  generate: {
-    routes: [
-      '/list/1'
-    ]
-  },
   /*
   ** Customize the progress-bar color
   */
