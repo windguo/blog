@@ -1,35 +1,60 @@
-
 <template>
-  <div class="container">
-    <h1>User Agent</h1>
-    <p>{{ userAgent }}</p>
-    <p>
-      <NuxtLink to="/list">
-        list
-      </NuxtLink>
-    </p>
+  <div class="page">
+    <post-list :posts="posts"></post-list>
+    <nuxt-link class="more" to="/page/1">查看更多</nuxt-link>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+import PostList from '~components/PostList'
+
 export default {
-  asyncData: ({ req }) => ({
-    userAgent: (req ? req.headers['user-agent'] : (typeof navigator !== 'undefined' ? navigator.userAgent : 'No user agent (generated)'))
-  })
+  async asyncData({ error }) {
+    const page = 0
+    
+    let [pageRes, countRes] = await Promise.all([
+      axios.get(`/api/post/page/${page}?scope=published`),
+      axios.get('/api/post/count/published'),
+    ]).catch(err => {
+      error({ statusCode: 400, message: err })
+    })
+
+    return {
+      posts: pageRes.data.list,
+      count: countRes.data.result,
+    }
+  },
+  components: {
+    PostList
+  }
 }
 </script>
 
 <style scoped>
-.container {
-  width: 70%;
-  margin: auto;
+.page {
+  box-shadow: none;
+}
+
+.more {
+  background: #fff;
+  border-radius: 2px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.26);
+  margin-bottom: 40px;
+  display: block;
   text-align: center;
-  padding-top: 100px;
+  padding: 10px 0;
+  font-size: 16px;
+  transition: all ease-in 0.2s;
 }
-p {
-  font-size: 20px;
+
+.more:hover {
+  background: #f2f2f2;
 }
-a {
-  color: #41B883;
+
+@media screen and (max-width: 960px) {
+  .more {
+    margin: 0 10px;
+  }
 }
 </style>
