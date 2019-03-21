@@ -1,0 +1,62 @@
+
+<template>
+  <div class="container">
+    <h1>Blog</h1>
+    <ul>
+      <li v-for="(post, index) in posts" :key="index">
+        <NuxtLink :to="{ name: 'list-id', params: { id: post.classid } }">
+          {{ post.classname }}
+        </NuxtLink>
+      </li>
+    </ul>
+    <p>
+      <NuxtLink to="/">
+        Back to home page
+      </NuxtLink>
+    </p>
+  </div>
+</template>
+
+<script>
+import axios from 'axios'
+
+export default {
+  asyncData({ req, params }) {
+    // We can return a Promise instead of calling the callback
+    return axios.get('https://www.yishuzi.com.cn/wangming_xiaochengxu_api/?getJson=class')
+      .then((res) => {
+        return { posts: res.data.result}
+      })
+  },
+  head: {
+    title: 'List of posts'
+  }
+}
+</script>
+
+<style scoped>
+.container {
+  width: 70%;
+  margin: auto;
+  text-align: center;
+  padding-top: 100px;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+ul li {
+  border: 1px #ddd solid;
+  padding: 20px;
+  text-align: left;
+}
+ul li a {
+  color: gray;
+}
+p {
+  font-size: 20px;
+}
+a {
+  color: #41B883;
+}
+</style>

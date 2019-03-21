@@ -17,11 +17,15 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
-
+  generate: {
+    routes: [
+      '/posts/1'
+    ]
+  },
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
+  loading: { color: '#c00' },
 
   /*
   ** Global CSS
