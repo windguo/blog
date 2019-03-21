@@ -9,7 +9,7 @@ export default function ({ isClient, isServer, route, req, res, redirect }) {
 
         if (path.indexOf('admin') > 0 && !cookies.token) {
             redirect('/login')
-        }
+        } 
     }
     //在客户端判读是否需要登陆
     if (isClient) {
