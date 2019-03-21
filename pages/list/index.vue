@@ -4,7 +4,7 @@
     <h1>Blog</h1>
     <ul>
       <li v-for="(post, index) in posts" :key="index">
-        <NuxtLink :to="{ name: 'list-id', params: { id: post.classid } }">
+        <NuxtLink :to="{ name: 'list-classid', params: { classid: post.classid } }">
           {{ post.classname }}
         </NuxtLink>
       </li>
