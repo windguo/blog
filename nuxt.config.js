@@ -29,27 +29,10 @@ module.exports = {
   */
   css: [],
   generate: {
-    generate: {
-      routes: function (callback) {
-        axios.get('https://www.yishuzi.com.cn/wangming_xiaochengxu_api/?getJson=class')
-          .then((res) => {
-            var routes = res.data.map((user) => {
-              return '/list/' + user.classid
-            })
-            callback(null, routes)
-          })
-          .catch(callback)
-        };
-        axios.get('https://www.yishuzi.com.cn/wangming_xiaochengxu_api/?getJson=content')
-          .then((res) => {
-            var routes = res.data.map((user) => {
-              return '/content/' + user.id
-            })
-            callback(null, routes)
-          })
-          .catch(callback)
-        }
-    }
+    routes: [
+      '/content/29445',
+      '/content/22697'
+    ]
   },
   /*
   ** Plugins to load before mounting the App
