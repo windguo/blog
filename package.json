@@ -4,6 +4,12 @@
   "description": "My stupendous Nuxt.js project",
   "author": "windguo",
   "private": true,
+  "config": {
+    "nuxt": {
+      "host": "https://nuxt.wangming.org.cn/",
+      "port": "80"
+    }
+  },
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
