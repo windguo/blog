@@ -18,7 +18,7 @@ import axios from 'axios'
 var page= 1;
 export default {
   asyncData({ req, params }) {
-    return axios.get('https://www.yishuzi.com.cn/wangming_xiaochengxu_api/?getJson=column&classid=9999&page=1')
+    return axios.get('https://www.yishuzi.com.cn/wangming_xiaochengxu_api/?getJson=column&classid=9999&page=1&pageSize=1000')
       .then((res) => {
         return { posts: res.data.result}
       })
