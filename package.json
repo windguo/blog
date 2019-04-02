@@ -3,7 +3,7 @@
   "dependencies": {
     "axios": "latest",
     "nuxt": "latest"
-  },
+  },  
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
