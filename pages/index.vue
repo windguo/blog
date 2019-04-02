@@ -8,7 +8,7 @@
           {{ post.title }}
         </NuxtLink>
       </li>
-      <button @click="loadNext">下一页</button>
+      <button @click="loadNext">加载下一页</button>
     </ul>
   </div>
 </template>
