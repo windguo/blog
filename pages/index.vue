@@ -3,10 +3,11 @@
   <div class="container">
     <h1>网名</h1>
     <ul>
-      <li v-for="(post, index) in posts" :key="index">
-        <NuxtLink :to="{ name: 'posts-id', params: { id: post.id } }">
-          {{ post.title }}
+      <li v-for="(wangming, index) in posts" :key="index">
+        <NuxtLink :to="{ name: 'wangming-id', params: { id: wangming.id } }">
+          {{ wangming.title }}
         </NuxtLink>
+        <div class="bottom">{{wangming.newstime}}</div>
       </li>
       <button @click="loadNext">加载下一页</button>
     </ul>
@@ -18,21 +19,13 @@ import axios from 'axios'
 var page= 1;
 export default {
   asyncData({ req, params }) {
-    return axios.get('https://www.yishuzi.com.cn/wangming_xiaochengxu_api/?getJson=column&classid=9999&page=1&pageSize=1000')
+    return axios.get('https://www.yishuzi.com.cn/wangming_xiaochengxu_api/?getJson=column&classid=9999&page=1&pageSize=10')
       .then((res) => {
         return { posts: res.data.result}
       })
   },
   head: {
     title: '网名'
-  },
-  data(){
-    return {
-      posts:[]
-    }
-  },
-  mounted:function(){
-    console.log('---goPosts--');
   },
   methods:{
     loadNext:function(){

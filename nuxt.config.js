@@ -7,14 +7,17 @@ export default {
     duration: 1500
   },
   head: {
-    title: 'Default title'
+    title: '网名大全'
   },
+  css: [
+    '@/assets/css/main.css',
+  ],
   generate: {
     routes: function () {
       return axios.get('https://www.yishuzi.com.cn/wangming_xiaochengxu_api/?getJson=getAllId')
         .then((res) => {
           return res.data.result.map((i) => {
-            return '/posts/' + i.id
+            return '/wangming/' + i.id
           })
         })
     }
