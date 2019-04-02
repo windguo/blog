@@ -24,7 +24,7 @@ export default {
       })
   },
   head: {
-    title: '网名'
+    title: '网名大全 wangming.org.cn'
   },
   methods:{
     loadNext:function(){
