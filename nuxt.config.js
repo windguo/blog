@@ -10,7 +10,7 @@ export default {
     title: '网名大全'
   },
   css: [
-    '@/assets/css/main.css',
+    '@/assets/css/main.css'
   ],
   generate: {
     routes: function () {
