@@ -4,8 +4,8 @@
     <h1>{{ post.title }}</h1>
     <pre>{{ post.body }}</pre>
     <p>
-      <NuxtLink to="/posts">
-        Back to the list
+      <NuxtLink to="/">
+        返回首页
       </NuxtLink>
     </p>
   </div>
