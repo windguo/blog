@@ -16,9 +16,8 @@ import axios from 'axios'
 
 export default {
   async asyncData({ params }) {
-    // We can use async/await ES6 feature
-    const { data } = await axios.get(`https://jsonplaceholder.typicode.com/posts/${params.id}`)
-    return { post: data }
+    const { data } = await axios.get(`https://www.yishuzi.com.cn/wangming_xiaochengxu_api/?getJson=content&id=${params.id}`)
+    return { post: data.result }
   },
   head() {
     return {

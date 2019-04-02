@@ -1,51 +1,22 @@
-const pkg = require('./package')
+import axios from 'axios'
 
-module.exports = {
-  mode: 'universal',
-
-  /*
-  ** Headers of the page
-  */
-  head: {
-    title: pkg.name,
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
-    ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+export default {
+  loading: {
+    color: '#4FC08D',
+    failedColor: '#bf5050',
+    duration: 1500
   },
-  /*
-  ** Customize the progress-bar color
-  */
-  loading: { color: '#c00' },
-
-  /*
-  ** Global CSS
-  */
-  css: [],
-
-  /*
-  ** Plugins to load before mounting the App
-  */
-  plugins: [],
-
-  /*
-  ** Nuxt.js modules
-  */
-  modules: [
-    '@nuxtjs/axios'
-  ],
-
-  /*
-  ** Build configuration
-  */
-  build: {
-    /*
-    ** You can extend webpack config here
-    */
-    extend(config, ctx) {}
+  head: {
+    title: 'Default title'
+  },
+  generate: {
+    routes: function () {
+      return axios.get('https://www.yishuzi.com.cn/wangming_xiaochengxu_api/?getJson=getAllId')
+        .then((res) => {
+          return res.data.result.map((i) => {
+            return '/posts/' + i.id
+          })
+        })
+    }
   }
 }
