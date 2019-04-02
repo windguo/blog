@@ -1,7 +1,6 @@
 
 <template>
   <div class="container">
-    <h1>网名</h1>
     <ul>
       <li v-for="(wangming, index) in posts" :key="index">
         <NuxtLink :to="{ name: 'wangming-id', params: { id: wangming.id } }">
@@ -19,7 +18,7 @@ import axios from 'axios'
 var page= 1;
 export default {
   asyncData({ req, params }) {
-    return axios.get('https://www.yishuzi.com.cn/wangming_xiaochengxu_api/?getJson=column&classid=9999&page=1&pageSize=10')
+    return axios.get('https://www.yishuzi.com.cn/wangming_xiaochengxu_api/?getJson=column&classid=9999&page=1&pageSize=100')
       .then((res) => {
         return { posts: res.data.result}
       })
