@@ -2,7 +2,7 @@
 <template>
   <div class="container">
     <h1>{{ post.title }}</h1>
-    <pre>{{ post.body }}</pre>
+    <pre>{{ post.newstime }} {{ post.diggtop }} {{ post.username }}</pre>
     <p>
       <NuxtLink to="/">
         返回首页
