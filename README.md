@@ -2,3 +2,4 @@
 
 https://nuxtjs.org/examples/async-data
 dd
+bb
